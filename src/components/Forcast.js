@@ -1,6 +1,19 @@
 import React from 'react';
 import {useState} from 'react'
+import CurrentWeather from './CurrentWeather';
 import Home from './Home';
+
+const navbar={
+  padding:'0px 10px',
+  backgroundColor:'#5d6963',
+  textAlign:'center',
+  display:'flex',
+  justifyContent:'center',
+  alignItems:"center",
+  top:0,
+  position: 'fixed',
+  width: '100%'
+}
 const inp={
   height:35,
   borderRadius:20,
@@ -10,9 +23,10 @@ const inp={
   textAlign: 'center',
   paddingLeft:10,
   paddingRight:10,
-  backgroundColor: '#7fadea',
+  backgroundColor: '#9ea8a3',
   color: 'white',
-  maxFontSize:20
+  maxFontSize:20,
+  outline: 'none',
 }
 const button={
   display:'flex',
@@ -21,10 +35,10 @@ const button={
   border:"none",
   height:35,
   width:35,
-  backgroundColor: '#7fadea',
+  backgroundColor: '#9ea8a3',
   marginLeft:"-35px",
   alignItems: 'center',
-  cursor: 'pointer'
+  cursor: 'pointer',
 }
 
 function Forcast() {
@@ -47,9 +61,6 @@ function Forcast() {
   );
 
   const APIKEY = '0dd8f02c6ff660858ed332fe8f5711d7';
-
-
-
 
 
   async function getWeather(latitude, longitude,name,country,state) {
@@ -85,11 +96,6 @@ function Forcast() {
   }
 
 
-
-
-
-
-
   async function getcoding(e){
     e.preventDefault();
     if(search===""){
@@ -110,11 +116,11 @@ function Forcast() {
         getWeather(latitude,longitude,name,country,state);
       }
       else{
+        // <CurrentWeather/>
         alert("City Not Found");
       }
     }
   }
-
 
   const onChangeHandle=(e)=>{
     let value=e.target.value;
@@ -123,12 +129,12 @@ function Forcast() {
   return (
     <div style={{width: '100%'}}>
         <div style={{}}>
-          <div style={{padding:'10px',backgroundColor:'#1263bd',textAlign:'center',display:'flex',justifyContent:'center',alignItems:"center"}}>
+          <div style={navbar}>
               <div style={{fontSize:'40px',paddingRight:'5px'}}>
                   W
               </div>
-              <div style={{flex:1,justifyContent:'center',}}>
-                  <form style={{display:'flex',justifyContent:'center'}} >
+              <div style={{flex:1,justifyContent:'center',border:'none'}}>
+                  <form style={{display:'flex',justifyContent:'center',border:'none'}} >
                           <input 
                               style={inp}
                               placeholder='Enter a city name'
@@ -137,7 +143,7 @@ function Forcast() {
                               onChange={e => onChangeHandle(e)}                                
                           />
                           <button style={button} onClick={e=>getcoding(e)}>
-                              <img style={{width:30,height:30,borderRadius:20,backgroundColor: '#7fadea'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Vector_search_icon.svg/1200px-Vector_search_icon.svg.png" alt="get"/>
+                              <img style={{width:30,height:30,borderRadius:20,backgroundColor: '#9ea8a3'}} src="https://cdn-icons.flaticon.com/png/512/2801/premium/2801881.png?token=exp=1644428240~hmac=b85056ec2034d1a82236fb312b155c97" alt="get"/>
                           </button>
                   </form>
               </div>

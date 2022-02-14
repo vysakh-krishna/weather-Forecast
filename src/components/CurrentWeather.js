@@ -1,10 +1,11 @@
 import React from 'react';
+// import Daily from './Daily';
 import ErrorHandle from './ErrorHandle';
 
 const outer={
     padding:"0px 15px",
     // display: 'flex',
-    backgroundColor: "rgba(255, 255, 255, 0.7)", 
+    backgroundColor: "rgba(255, 255, 255, 0.4)", 
     color: "rgba(255, 255, 255, 0.7)",
     width:"80%",
     borderRadius:10,
@@ -24,13 +25,14 @@ function CurrentWeather(props) {
       {
         data.daily !== 404 ? 
           <>
-            <div>
-              <h1 style={{ fontWeight: "bold", color: "#000000", marginBottom: "10px" }}>Current Weather</h1>
-            </div><div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{textAlign:'left'}}>
+              <h3 style={{ fontWeight: "bold", color: "#000000", marginBottom: "10px" }}>Current Weather</h3>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <div style={{ color: "#000000", flex: 1 }}>
                 <div style={{ fontSize: "25px", color: "#000000", textAlign: 'left' }}>
                   {data.name}, {data.country}<br />
-                  <span style={{ color: "#808080", fontSize: 20 }}>As of {new Date().toLocaleTimeString()}</span>
+                  <span style={{ color: "black", fontSize: 20 }}>As of {new Date().toLocaleTimeString()}</span>
                 </div>
                 <span style={{ color: "#000000", fontSize: 50 }}>{Math.floor(data.temp - 273.15)}<sup>o</sup></span>
                 <span style={{ color: "#000000", fontSize: 30, marginLeft: 10 }}>{data.minidesc}</span>
@@ -44,8 +46,6 @@ function CurrentWeather(props) {
                 </div>
               </div>
             </div>
-            
-            
           </>
           :
           <div>

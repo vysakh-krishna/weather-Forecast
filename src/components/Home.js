@@ -4,10 +4,11 @@ const current={
     width:'100%',
     margin: "auto",
     height: "auto",
+    marginTop: 100
 }
 function Home(props) {
     let data=props;
-    console.log(data);
+    // console.log(data);
     return (
         <div style={current}>
             {
