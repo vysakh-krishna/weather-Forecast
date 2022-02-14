@@ -143,7 +143,7 @@ function Forcast() {
                               onChange={e => onChangeHandle(e)}                                
                           />
                           <button style={button} onClick={e=>getcoding(e)}>
-                              <img style={{width:30,height:30,borderRadius:20,backgroundColor: '#9ea8a3'}} src="https://cdn-icons.flaticon.com/png/512/2801/premium/2801881.png?token=exp=1644428240~hmac=b85056ec2034d1a82236fb312b155c97" alt="get"/>
+                              <img style={{width:30,height:30,borderRadius:20,backgroundColor: '#9ea8a3'}} src="./magnifier.png" alt="get"/>
                           </button>
                   </form>
               </div>
