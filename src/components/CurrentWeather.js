@@ -18,15 +18,16 @@ const outer={
 function CurrentWeather(props) {
     // console.log(props.data.data);
     let data=props.data.data;
-    // console.log(data);
+    // console.log(props);
     const icon=`http://openweathermap.org/img/wn/${data.icon}.png`
   return (
     <div style={outer}>
       {
-        data.daily !== 404 ? 
-          <>
-            <div style={{textAlign:'left'}}>
-              <h3 style={{ fontWeight: "bold", color: "#000000", marginBottom: "10px" }}>Current Weather</h3>
+        data.temp !== undefined ? 
+        // console.log()
+        <>
+            <div style={{backgroundColor: "rgba(255, 255, 255, 0.4)",color: "black",borderRadius:10}}>
+              Current Weather
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div style={{ color: "#000000", flex: 1 }}>
@@ -40,7 +41,7 @@ function CurrentWeather(props) {
                   <img src={icon} alt="weather icon" />
                 </span>
                 <div>
-                  <span style={{ fontSize: 20, color: "#4b8fdb", }}>
+                  <span style={{ fontSize: 20, color: "black", }}>
                     {data.description}
                   </span>
                 </div>

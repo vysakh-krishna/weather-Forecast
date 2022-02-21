@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from 'react'
-import CurrentWeather from './CurrentWeather';
+// import CurrentWeather from './CurrentWeather';
 import Home from './Home';
 
 const navbar={
@@ -56,6 +56,7 @@ function Forcast() {
       daily:undefined,
       hourly:undefined,
       icon: undefined,
+      timezone: undefined,
 
     }
   );
@@ -130,7 +131,7 @@ function Forcast() {
     <div style={{width: '100%'}}>
         <div style={{}}>
           <div style={navbar}>
-              <div style={{fontSize:'40px',paddingRight:'5px'}}>
+              <div style={{fontSize:'40px',paddingRight:'5px',fontFamily:'serif'}}>
                   W
               </div>
               <div style={{flex:1,justifyContent:'center',border:'none'}}>
@@ -149,17 +150,7 @@ function Forcast() {
               </div>
           </div>
         </div>
-        {/* <div style={{display:'flex',justifyContent:'space-around',backgroundColor:'#385be1',color:'#fff'}}>
-            <div>
-                Today
-            </div>
-            <div>
-                Hourly
-            </div>
-            <div>
-                10 Days
-            </div>
-        </div> */}
+
         {
           weather.temp !== undefined ?
           <div>
@@ -173,34 +164,5 @@ function Forcast() {
   )
   
 }
-
-
-
-
-  // async function getcoding(e) {
-  //   e.preventDefault();
-  //   if(search==""){
-  //     alert("enter city name");
-  //   }
-  //   else{
-  //     let url=`https://api.openweathermap.org/data/2.5/weather?q=${search}&APPID=${APIKEY}`
-  //     const data=await fetch(url).then((res)=>
-  //       res.json()).then(data=>data);
-  //       // console.log(data);
-  //       let latitude=data.coord.lat;
-  //       let longitude=data.coord.lon;
-  //       // setLat(latitude);
-  //       // setLon(longitude);
-  //       getWeather(latitude,longitude);
-  //       // setWeather({
-  //       //   data:data
-  //       // })
-  //   }
-  // }
-
-
-// const [lat,setLat] = useState('46.7406');
-  // const [lon, setLon] = useState('12.2797');
-
 
 export default Forcast
