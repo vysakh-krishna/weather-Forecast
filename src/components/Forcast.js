@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useState} from 'react'
-// import CurrentWeather from './CurrentWeather';
 import Home from './Home';
 
 const navbar={
@@ -40,9 +39,21 @@ const button={
   alignItems: 'center',
   cursor: 'pointer',
 }
-
-function Forcast() {
-  
+const buttn={
+  display:'flex',
+  justifyContent:'center',
+  borderRadius:"20px 20px 20px 20px",
+  border:"none",
+  height:35,
+  width:35,
+  backgroundColor: '#9ea8a3',
+  marginLeft:"25px",
+  alignItems: 'center',
+  cursor: 'pointer',
+}
+function Forcast(props) {
+  let lat= props.lat;
+  let lon= props.lon;
   const [isloading, setIsloading] = useState(false);
   const [search,setSearch]= useState('');
   const [weather,setWeather] =useState(
@@ -64,15 +75,16 @@ function Forcast() {
   const APIKEY = '0dd8f02c6ff660858ed332fe8f5711d7';
 
 
-  async function getWeather(latitude, longitude,name,country,state) {
-    if(search===""){
-      alert("enter city name");
-    }
-    else{
+  useEffect(() => {
+    return  getWeather(lat,lon,'Your Location','--');
+  }, [lat,lon])
+
+
+  async function getWeather(latitude, longitude,name,country) {
+    if (latitude!== undefined && longitude!== undefined){
       let weatherurl=`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${APIKEY}`
       const data=await fetch(weatherurl).then((res)=>
         res.json()).then(data=>data);
-        // console.log(data);
         let temp=data.current.temp;
         let description=data.current.weather[0].description;
         let hourly=data.hourly;
@@ -84,7 +96,6 @@ function Forcast() {
           ...weather,
           name:name,
           country:country,
-          state:state,
           temp:temp,
           description:description,
           daily:daily,
@@ -92,7 +103,6 @@ function Forcast() {
           icon:icon,
           minidesc:minidesc,
         })
-        // console.log(weather);
     }
   }
 
@@ -107,17 +117,14 @@ function Forcast() {
       let geourl=`https://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${APIKEY}`
       const data = await fetch(geourl).then((res)=>
       res.json()).then((data)=>data);
-      // console.log(data);
       if(data[0] !== undefined){
         let latitude=data[0].lat;
         let longitude=data[0].lon;
         let name=data[0].name;
         let country=data[0].country;
-        let state=data[0].state;
-        getWeather(latitude,longitude,name,country,state);
+        getWeather(latitude,longitude,name,country);
       }
       else{
-        // <CurrentWeather/>
         alert("City Not Found");
       }
     }
@@ -146,6 +153,9 @@ function Forcast() {
                           <button style={button} onClick={e=>getcoding(e)}>
                               <img style={{width:30,height:30,borderRadius:20,backgroundColor: '#9ea8a3'}} src="./magnifier.png" alt="get"/>
                           </button>
+                          <button style={buttn} >
+                            <img style={{width:30,height:30,borderRadius:20,backgroundColor: '#9ea8a3'}} src="./map.png" alt="get"/>
+                          </button>
                   </form>
               </div>
           </div>
@@ -156,8 +166,8 @@ function Forcast() {
           <div>
             <Home data={weather} isloading={isloading}/>
           </div> :
-          <div style={{marginTop:90}}>
-            Invalid
+          <div style={{marginTop:90,color: 'white'}}>
+            Getting Location...
           </div>
         }
     </div>

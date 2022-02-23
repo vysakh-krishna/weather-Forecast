@@ -22,9 +22,6 @@ const outer={
 
 function Hourly(props) {
   let hourly = props.data.data.hourly;
-  // console.log(hourly);
-  // let m=moment.unix(hourly[0].dt).format('ddd HH:mm');
-  // console.log(m);
   return (
     <>
     <div style={outer}>

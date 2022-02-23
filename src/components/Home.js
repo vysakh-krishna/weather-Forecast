@@ -10,7 +10,6 @@ const current={
 }
 function Home(props) {
     let data=props;
-    // console.log(data);
     return (
         <div style={current}>
             {

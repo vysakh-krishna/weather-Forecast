@@ -1,30 +1,24 @@
 import React from 'react';
-// import Daily from './Daily';
 import ErrorHandle from './ErrorHandle';
 
 const outer={
     padding:"0px 15px",
-    // display: 'flex',
     backgroundColor: "rgba(255, 255, 255, 0.4)", 
     color: "rgba(255, 255, 255, 0.7)",
     width:"80%",
     borderRadius:10,
     margin:"auto",
     marginTop:25,
-    // marginBottom:25,
     border: "1px solid black",
 
 }
 function CurrentWeather(props) {
-    // console.log(props.data.data);
     let data=props.data.data;
-    // console.log(props);
     const icon=`http://openweathermap.org/img/wn/${data.icon}.png`
   return (
     <div style={outer}>
       {
         data.temp !== undefined ? 
-        // console.log()
         <>
             <div style={{backgroundColor: "rgba(255, 255, 255, 0.4)",color: "black",borderRadius:10}}>
               Current Weather
